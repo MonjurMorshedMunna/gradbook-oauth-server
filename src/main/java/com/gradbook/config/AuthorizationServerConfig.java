@@ -1,19 +1,31 @@
 package com.gradbook.config;
 
-import com.gradbook.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.authentication.configurers.GlobalAuthenticationConfigurerAdapter;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
+import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
+import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 
+/**
+ * Created by munna on 6/19/17.
+ */
 @Configuration
-public class AuthorizationServerConfig extends GlobalAuthenticationConfigurerAdapter{
-
+public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
-    CustomUserDetailsService userDetailsService;
+    private AuthenticationManager authManager;
 
     @Override
-    public void init(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
+    public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
+        endpoints.authenticationManager(authManager);
+    }
+
+    @Override
+    public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory()
+                .withClient("gradbook")
+                .secret("gradbook")
+                .authorizedGrantTypes("password")
+                .scopes("read,write,trust");
     }
 }
