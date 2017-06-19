@@ -10,9 +10,10 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import com.gradbook.models.user.User;
 import com.gradbook.models.user.UserRepository;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
