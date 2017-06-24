@@ -22,11 +22,11 @@ public class UserRole {
 	private Long id;
 	
 	@OneToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="user_id")
 	private User user;
 	
 	@OneToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="role_id")
 	private Role role;
 	
 	public UserRole(){
