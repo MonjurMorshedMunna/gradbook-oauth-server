@@ -16,11 +16,14 @@ public class OauthAspect {
     /*@Autowired
     private KafkaTemplate<String, String> template;*/
 
+    @Autowired
+    private KafkaTemplate<String, String > template;
 
 
-    @After("execution( *  com.gradbook..*.*(..))")
+
+    @After("execution( *  com.gradbook.controllers..*.*(..))")
     public void tracing(JoinPoint joinPoint){
-//        this.template.send("ums_logger","The method executed--->"+joinPoint.getSignature().toString());
+        this.template.send("ums_logger","The method executed--->");
         System.out.println("the logger--->"+joinPoint.getSignature().toString());
     }
 
