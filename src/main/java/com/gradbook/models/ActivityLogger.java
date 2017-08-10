@@ -1,13 +1,14 @@
 package com.gradbook.models;
 
 import java.sql.Timestamp;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Monjur-E-Morshed on 10-Aug-17.
  */
 public class ActivityLogger {
 
-  private Long id;
+
 
   private String userId;
 
@@ -17,16 +18,12 @@ public class ActivityLogger {
 
   private String methodName;
 
-  public ActivityLogger() {
+    private static final AtomicLong count = new AtomicLong(0);
+
+
+    public ActivityLogger() {
   }
 
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long pId) {
-    id = pId;
-  }
 
   public String getUserId() {
     return userId;

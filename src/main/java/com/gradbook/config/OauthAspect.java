@@ -43,6 +43,7 @@ public class OauthAspect {
     ObjectMapper mapper = new ObjectMapper();
     String jsonToString = mapper.writeValueAsString(activityLogger);
     this.template.send("ums_logger", jsonToString);
+
   }
 
 }
