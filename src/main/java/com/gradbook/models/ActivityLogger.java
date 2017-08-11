@@ -8,8 +8,6 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 public class ActivityLogger {
 
-
-
   private String userId;
 
   private Timestamp accessTime;
