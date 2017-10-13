@@ -10,9 +10,12 @@ import org.springframework.stereotype.Repository;
 @CacheConfig(cacheNames = "user")
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    @Cacheable("user")
+    //@Cacheable("findByEmailAndPassword")
+    @Cacheable("findByEmailAndPassword")
 	User findByEmailAndPassword(String email, String password);
 
-    @Cacheable("user")
+    //@Cacheable(value="user", key="#email")
+    //@Cacheable("findByEmail")
+    @Cacheable("findByEmail")
     User findByEmail(String email);
 }

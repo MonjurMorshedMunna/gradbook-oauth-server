@@ -1,3 +1,4 @@
+/*
 package com.gradbook.config;
 
 import com.gradbook.models.ActivityLogger;
@@ -19,8 +20,10 @@ import java.sql.Timestamp;
 @Aspect
 public class OauthAspect {
 
-    /*@Autowired
-    private KafkaTemplate<String, String> template;*/
+    */
+/*@Autowired
+    private KafkaTemplate<String, String> template;*//*
+
 
   @Autowired
   private KafkaTemplate<String, String> template;
@@ -47,3 +50,4 @@ public class OauthAspect {
   }
 
 }
+*/

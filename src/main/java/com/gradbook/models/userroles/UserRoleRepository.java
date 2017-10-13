@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 @CacheConfig(cacheNames = "userRole")
 public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
-
-  @Cacheable
+  @Cacheable("findByUserId")
   UserRole findByUserId(Long userId);
 }
